@@ -1,0 +1,2569 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-height: 100vh;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #4f3538;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(175, 70, 85, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(195, 80, 95, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(120, 40, 55, 0.08),
+            transparent 60%
+        ),
+        #c98790;
+
+    opacity: 1;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+/* =========================================
+   PAGE TRANSITION
+========================================= */
+
+body.page-exit {
+    opacity: 0;
+
+    transform: scale(0.98);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+/* =========================================
+   GENERAL HERO
+========================================= */
+
+.hero {
+    position: relative;
+
+    width: 90%;
+    max-width: 700px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    animation: fadeIn 1.5s ease;
+
+    backdrop-filter: blur(12px);
+
+    background: rgba(255, 245, 245, 0.20);
+
+    box-shadow:
+        0 30px 80px rgba(70, 25, 30, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+    transition: 0.5s ease;
+}
+
+.hero:hover {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================
+   HERO DECORATION
+========================================= */
+
+.hero::before {
+    content: "♡";
+
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+
+    font-size: 25px;
+
+    color: rgba(255, 190, 200, 0.45);
+
+    animation: floatingHeart 3s ease-in-out infinite;
+}
+
+
+/* =========================================
+   HERO TEXT
+========================================= */
+
+.hero h1 {
+    margin-top: 0;
+
+    letter-spacing: -1px;
+
+    text-shadow:
+        0 5px 20px rgba(70, 25, 30, 0.12);
+}
+
+.hero h1 span {
+    color: #ffb6c1;
+}
+
+.small-text {
+    opacity: 0.9;
+
+    color: #542f34;
+}
+
+.description {
+    color: #59383b;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   START BUTTON
+========================================= */
+
+.hero button {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-top: 5px;
+
+    padding: 13px 26px;
+
+    background: rgba(255, 230, 233, 0.12);
+
+    color: #ffe1e5;
+
+    border: 1px solid rgba(255, 210, 215, 0.60);
+
+    border-radius: 50px;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(70, 25, 30, 0.15);
+
+    transition: all 0.4s ease;
+}
+
+.hero button:hover {
+    background: #f29aaa;
+
+    color: white;
+
+    border-color: #f29aaa;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(100, 35, 45, 0.25);
+}
+
+
+/* Kilauan tombol */
+
+.hero button::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.30);
+
+    transform: skewX(-25deg);
+
+    transition: 0.6s;
+}
+
+.hero button:hover::after {
+    left: 130%;
+}
+
+
+/* =========================================
+   HOME PAGE
+========================================= */
+
+.home-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.home-page .hero {
+    width: 90%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 40px 30px;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+
+    text-align: center;
+
+    animation: fadeIn 1.5s ease;
+}
+
+.home-page .hero:hover {
+    transform: none;
+}
+
+.home-page .small-text {
+    margin-bottom: 25px;
+}
+
+.home-page .description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-page .hero button {
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   FALLING FLOWERS
+========================================= */
+
+.falling-petals {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* Bunga */
+
+.falling-petals span {
+    position: absolute;
+
+    top: -50px;
+
+    display: block;
+
+    color: #ffb6c1;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    opacity: 0.95;
+
+    text-shadow:
+        0 2px 8px rgba(255, 150, 170, 0.55);
+
+    animation-name: flowerFall;
+
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
+
+    will-change: transform;
+}
+
+
+/* Posisi bunga */
+
+.falling-petals span:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.falling-petals span:nth-child(2) {
+    left: 12%;
+    animation-delay: 3s;
+    animation-duration: 9s;
+}
+
+.falling-petals span:nth-child(3) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+.falling-petals span:nth-child(4) {
+    left: 28%;
+    animation-delay: 5s;
+    animation-duration: 10s;
+}
+
+.falling-petals span:nth-child(5) {
+    left: 35%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.falling-petals span:nth-child(6) {
+    left: 43%;
+    animation-delay: 6s;
+    animation-duration: 9s;
+}
+
+.falling-petals span:nth-child(7) {
+    left: 50%;
+    animation-delay: 1.5s;
+    animation-duration: 8s;
+}
+
+.falling-petals span:nth-child(8) {
+    left: 58%;
+    animation-delay: 4s;
+    animation-duration: 10s;
+}
+
+.falling-petals span:nth-child(9) {
+    left: 65%;
+    animation-delay: 0.5s;
+    animation-duration: 7s;
+}
+
+.falling-petals span:nth-child(10) {
+    left: 72%;
+    animation-delay: 5s;
+    animation-duration: 9s;
+}
+
+.falling-petals span:nth-child(11) {
+    left: 78%;
+    animation-delay: 2.5s;
+    animation-duration: 8s;
+}
+
+.falling-petals span:nth-child(12) {
+    left: 84%;
+    animation-delay: 6s;
+    animation-duration: 10s;
+}
+
+.falling-petals span:nth-child(13) {
+    left: 90%;
+    animation-delay: 1s;
+    animation-duration: 7s;
+}
+
+.falling-petals span:nth-child(14) {
+    left: 96%;
+    animation-delay: 4.5s;
+    animation-duration: 9s;
+}
+
+.falling-petals span:nth-child(15) {
+    left: 15%;
+    animation-delay: 7s;
+    animation-duration: 11s;
+}
+
+.falling-petals span:nth-child(16) {
+    left: 40%;
+    animation-delay: 8s;
+    animation-duration: 9s;
+}
+
+.falling-petals span:nth-child(17) {
+    left: 70%;
+    animation-delay: 3.5s;
+    animation-duration: 11s;
+}
+
+.falling-petals span:nth-child(18) {
+    left: 88%;
+    animation-delay: 7.5s;
+    animation-duration: 8s;
+}
+
+
+/* Ukuran bunga */
+
+.falling-petals span:nth-child(3n) {
+    font-size: 14px;
+}
+
+.falling-petals span:nth-child(4n) {
+    font-size: 22px;
+}
+
+.falling-petals span:nth-child(5n) {
+    font-size: 12px;
+}
+
+
+/* Animasi */
+
+@keyframes flowerFall {
+
+    0% {
+        transform:
+            translate3d(0, -60px, 0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.95;
+    }
+
+    25% {
+        transform:
+            translate3d(50px, 25vh, 0)
+            rotate(90deg);
+    }
+
+    50% {
+        transform:
+            translate3d(-40px, 50vh, 0)
+            rotate(180deg);
+    }
+
+    75% {
+        transform:
+            translate3d(60px, 75vh, 0)
+            rotate(270deg);
+    }
+
+    100% {
+        transform:
+            translate3d(-50px, 110vh, 0)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   ANNIVERSARY PAGE
+========================================= */
+
+.anniversary {
+    width: 90%;
+
+    max-width: 700px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    animation: fadeIn 1.5s ease;
+}
+
+.anniversary h1 {
+    font-size: 52px;
+
+    font-weight: normal;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+}
+
+.anniversary h1 span {
+    color: #ffb6c1;
+}
+
+
+/* =========================================
+   HEART
+========================================= */
+
+.heart {
+    font-size: 70px;
+
+    color: #ff9faf;
+
+    margin: 25px 0;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================
+   QUOTE
+========================================= */
+
+.quote {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #806868;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 35px 0;
+}
+
+.time-box {
+    width: 90px;
+
+    padding: 15px 10px;
+
+    background: rgba(255, 245, 245, 0.55);
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 220, 225, 0.75);
+
+    backdrop-filter: blur(8px);
+}
+
+.time-box span {
+    display: block;
+
+    font-size: 30px;
+
+    color: #c98282;
+}
+
+.time-box small {
+    font-size: 12px;
+
+    color: #806868;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   MEMORIES
+========================================= */
+
+.memories {
+    position: relative;
+
+    margin-top: 100px;
+
+    padding: 80px 20px;
+
+    border-top:
+        1px solid rgba(100, 50, 55, 0.15);
+}
+
+.memories h2 {
+    font-size: 38px;
+
+    font-weight: normal;
+
+    color: #9b6868;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 15px;
+}
+
+.memory-description {
+    max-width: 500px;
+
+    margin: 0 auto 40px;
+
+    line-height: 1.8;
+
+    color: #806868;
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 40px;
+
+    max-width: 750px;
+
+    margin: auto;
+
+    align-items: start;
+}
+
+.photo-card {
+    padding: 14px 14px 22px;
+
+    border-radius: 3px;
+
+    background: #fffdfb;
+
+    box-shadow:
+        0 15px 35px rgba(100, 60, 60, 0.12);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.photo-card:nth-child(odd) {
+    transform: rotate(-2.5deg);
+}
+
+.photo-card:nth-child(even) {
+    transform: rotate(2.5deg);
+}
+
+.photo-card:hover {
+    transform:
+        translateY(-10px)
+        rotate(0deg)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 45px rgba(100, 60, 60, 0.18);
+
+    z-index: 2;
+}
+
+.photo-card img {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin-bottom: 18px;
+}
+
+.photo-card p {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    color: #806868;
+}
+
+
+/* =========================================
+   LOVE LETTER
+========================================= */
+
+.love-letter {
+    position: relative;
+
+    margin-top: 120px;
+
+    padding-top: 70px;
+
+    border-top:
+        1px solid rgba(100, 50, 55, 0.15);
+
+    text-align: center;
+}
+
+.love-letter h2 {
+    font-size: 38px;
+
+    font-weight: normal;
+
+    color: #9b6868;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+    width: 260px;
+
+    height: 170px;
+
+    margin: 20px auto 30px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 15px 25px
+            rgba(100, 60, 60, 0.12)
+        );
+
+    transition: 0.5s ease;
+}
+
+.envelope:hover {
+    transform:
+        translateY(-8px)
+        scale(1.02);
+}
+
+.envelope-body {
+    width: 100%;
+
+    height: 100%;
+
+    background: #e6a6ad;
+
+    border-radius: 5px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow:
+        0 15px 30px
+        rgba(100, 60, 60, 0.15);
+}
+
+.envelope-body p {
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+}
+
+.envelope-top {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        130px solid transparent;
+
+    border-right:
+        130px solid transparent;
+
+    border-top:
+        80px solid #d59696;
+
+    z-index: 2;
+
+    transition: 0.5s;
+}
+
+
+/* =========================================
+   LETTER CONTENT
+========================================= */
+
+.letter-content {
+    display: none;
+
+    position: relative;
+
+    max-width: 620px;
+
+    margin: 40px auto;
+
+    padding: 50px 45px;
+
+    background:
+        rgba(255, 250, 247, 0.96);
+
+    border:
+        1px solid
+        rgba(180, 130, 130, 0.15);
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(100, 60, 60, 0.12);
+
+    text-align: left;
+
+    font-size: 16px;
+
+    line-height: 2;
+
+    color: #6f5656;
+
+    animation:
+        letterOpen 1s ease;
+}
+
+.letter-content.show {
+    display: block;
+}
+
+.letter-content p {
+    margin-bottom: 20px;
+}
+
+
+/* Hiasan surat */
+
+.letter-content::before {
+    content: "♡";
+
+    display: block;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    color: #c98282;
+
+    margin-bottom: 25px;
+}
+
+@keyframes letterOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   LETTER BUTTON
+========================================= */
+
+#openLetter {
+    background: transparent;
+
+    color: #9b6868;
+
+    border:
+        1px solid
+        rgba(155, 104, 104, 0.35);
+
+    box-shadow: none;
+
+    transition: 0.4s ease;
+}
+
+#openLetter:hover {
+    background: #d99a9a;
+
+    color: white;
+
+    border-color: #d99a9a;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+.music-button {
+    position: fixed;
+
+    bottom: 25px;
+    right: 25px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background:
+        rgba(170, 75, 90, 0.92);
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(70, 25, 30, 0.20);
+
+    transition: 0.3s;
+
+    z-index: 20;
+}
+
+.music-button:hover {
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes floatingHeart {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotate(8deg);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .home-page .hero {
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .anniversary h1 {
+        font-size: 40px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+
+        max-width: 380px;
+
+        gap: 35px;
+    }
+
+    .photo-card:nth-child(odd),
+    .photo-card:nth-child(even) {
+        transform: rotate(0deg);
+    }
+
+    .photo-card:hover {
+        transform:
+            translateY(-6px);
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .time-box {
+        width: 72px;
+
+        padding: 12px 6px;
+    }
+
+    .time-box span {
+        font-size: 24px;
+    }
+
+    .letter-content {
+        padding: 35px 25px;
+    }
+
+    .envelope {
+        width: 220px;
+
+        height: 145px;
+    }
+
+    .envelope-top {
+        border-left-width: 110px;
+
+        border-right-width: 110px;
+
+        border-top-width: 70px;
+    }
+
+    .music-button {
+        bottom: 15px;
+
+        right: 15px;
+
+        padding: 10px 16px;
+    }
+}
+
+/* =========================================
+   FIX LOVE LETTER - CENTER & CONTRAST
+========================================= */
+
+.anniversary {
+    width: 90%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding: 60px 30px;
+
+    text-align: center;
+}
+
+
+/* SECTION SURAT */
+
+.love-letter {
+    position: relative;
+
+    width: 100%;
+
+    margin: 120px auto 0;
+
+    padding-top: 70px;
+
+    border-top:
+        1px solid rgba(80, 40, 45, 0.22);
+
+    text-align: center;
+}
+
+
+/* JUDUL */
+
+.love-letter h2 {
+    margin-bottom: 40px;
+
+    font-size: 38px;
+
+    font-weight: normal;
+
+    color: #68464a;
+
+    letter-spacing: -0.5px;
+
+    text-shadow:
+        0 2px 8px rgba(255, 230, 230, 0.25);
+}
+
+
+/* TEKS KECIL DI ATAS */
+
+.love-letter > p {
+    color: #5f4145;
+}
+
+
+/* ENVELOPE */
+
+.envelope {
+    margin: 20px auto 30px;
+}
+
+
+/* TOMBOL OPEN/CLOSE LETTER */
+
+#openLetter {
+    display: inline-block;
+
+    margin: 0 auto;
+
+    padding: 10px 18px;
+
+    background: rgba(255, 235, 238, 0.25);
+
+    color: #603e43;
+
+    border:
+        1px solid rgba(95, 55, 60, 0.45);
+
+    border-radius: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 5px 15px rgba(80, 40, 45, 0.08);
+
+    transition: all 0.35s ease;
+}
+
+#openLetter:hover {
+    background: #8f5962;
+
+    color: white;
+
+    border-color: #8f5962;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 20px rgba(80, 40, 45, 0.18);
+}
+
+
+/* ISI SURAT */
+
+.letter-content {
+    width: 100%;
+    max-width: 620px;
+
+    margin: 40px auto;
+
+    padding: 50px 45px;
+
+    background:
+        rgba(255, 250, 247, 0.97);
+
+    color: #5f4a4d;
+
+    border:
+        1px solid rgba(150, 100, 100, 0.18);
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 50px rgba(80, 40, 45, 0.16);
+
+    text-align: left;
+
+    font-size: 16px;
+
+    line-height: 2;
+}
+
+
+/* Hiasan hati di surat */
+
+.letter-content::before {
+    color: #c87580;
+}
+
+/* =========================================
+   CINEMATIC LOVE LETTER
+========================================= */
+
+.love-letter {
+    perspective: 1200px;
+}
+
+
+/* ENVELOPE */
+
+.envelope {
+    width: 280px;
+    height: 180px;
+
+    margin: 25px auto 30px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.envelope:hover {
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+    filter:
+        drop-shadow(
+            0 20px 30px
+            rgba(80, 35, 45, 0.20)
+        );
+}
+
+
+/* BADAN ENVELOPE */
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e8aab2,
+            #d8959f
+        );
+
+    border-radius: 7px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 35px
+        rgba(80, 35, 45, 0.18);
+}
+
+
+/* Efek cahaya lembut */
+
+.envelope-body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    filter: blur(10px);
+}
+
+
+/* TULISAN FOR YOU */
+
+.envelope-body p {
+    position: relative;
+
+    z-index: 3;
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 2px 8px
+        rgba(90, 40, 45, 0.18);
+}
+
+
+/* LIPATAN DEPAN ENVELOPE */
+
+.envelope-top {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        140px solid transparent;
+
+    border-right:
+        140px solid transparent;
+
+    border-top:
+        85px solid #cf858f;
+
+    z-index: 4;
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.7s ease,
+        border-top-color 0.5s ease;
+}
+
+
+/* HATI KECIL */
+
+.envelope::after {
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -45%);
+
+    z-index: 5;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 28px;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+
+/* HOVER */
+
+.envelope:hover::after {
+    transform:
+        translate(-50%, -45%)
+        scale(1.15);
+
+    color: white;
+}
+
+
+/* =========================================
+   LETTER CONTENT
+========================================= */
+
+.letter-content {
+    opacity: 0;
+
+    transform:
+        translateY(30px)
+        scale(0.96);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+    display: none;
+}
+
+
+/* Saat surat dibuka */
+
+.letter-content.show {
+    display: block;
+
+    animation:
+        letterReveal 0.9s ease forwards;
+}
+
+
+@keyframes letterReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.94);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-5px)
+            scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   SURAT LEBIH PREMIUM
+========================================= */
+
+.letter-content {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 253, 250, 0.98),
+            rgba(255, 247, 244, 0.96)
+        );
+
+    box-shadow:
+        0 25px 60px
+        rgba(80, 35, 45, 0.18),
+
+        0 5px 15px
+        rgba(80, 35, 45, 0.08);
+
+    border:
+        1px solid
+        rgba(180, 120, 120, 0.20);
+}
+
+
+/* Garis dekorasi surat */
+
+.letter-content::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10%;
+    right: 10%;
+
+    bottom: 25px;
+
+    height: 1px;
+
+    background:
+        rgba(170, 110, 110, 0.15);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .envelope {
+        width: 240px;
+        height: 155px;
+    }
+
+    .envelope-top {
+        border-left-width: 120px;
+        border-right-width: 120px;
+        border-top-width: 75px;
+    }
+
+    .envelope-body p {
+        font-size: 18px;
+    }
+
+    .envelope::after {
+        font-size: 24px;
+    }
+}
+
+/* =========================================
+   ENVELOPE OPENING ANIMATION
+========================================= */
+
+/* Envelope jadi punya ruang untuk flap */
+
+.envelope {
+    perspective: 1000px;
+}
+
+
+/* Flap */
+
+.envelope-top {
+    transform-origin: top center;
+
+    transition:
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        border-top-color 0.4s ease;
+}
+
+
+/* Saat envelope dibuka */
+
+.envelope.open .envelope-top {
+    transform:
+        rotateX(180deg);
+
+    border-top-color: #c77f89;
+}
+
+
+/* Hati di tengah envelope */
+
+.envelope::after {
+    transition:
+        opacity 0.35s ease,
+        transform 0.5s ease;
+}
+
+
+/* Saat dibuka, hati menghilang */
+
+.envelope.open::after {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -45%)
+        scale(0.4);
+}
+
+
+/* Envelope sedikit naik ketika dibuka */
+
+.envelope.open {
+    transform:
+        translateY(-5px);
+}
+
+
+/* =========================================
+   LETTER REVEAL
+========================================= */
+
+.letter-content.show {
+    animation:
+        letterReveal 0.9s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+
+@keyframes letterReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.92);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-6px)
+            scale(1.015);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .envelope.open {
+        transform:
+            translateY(-3px);
+    }
+
+}
+
+/* =========================================
+   REAL ENVELOPE FLAP
+========================================= */
+
+.envelope {
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    overflow: visible;
+}
+
+
+/* Badan envelope */
+
+.envelope-body {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+/* FLAP ENVELOPE */
+
+.envelope-top {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 52%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dfa0a9,
+            #c9828c
+        );
+
+    border: none;
+
+    clip-path: polygon(
+        0 0,
+        50% 100%,
+        100% 0
+    );
+
+    transform-origin: top center;
+
+    transform:
+        rotateX(0deg);
+
+    z-index: 5;
+
+    transition:
+        transform 0.9s
+        cubic-bezier(0.4, 0, 0.2, 1);
+
+    backface-visibility: hidden;
+}
+
+
+/* GARIS HALUS DI FLAP */
+
+.envelope-top::after {
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+    right: 15%;
+
+    top: 8px;
+
+    height: 1px;
+
+    background:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================
+   OPEN STATE
+========================================= */
+
+.envelope.open .envelope-top {
+
+    transform:
+        rotateX(180deg);
+
+    z-index: 0;
+}
+
+
+/* Envelope sedikit naik */
+
+.envelope.open {
+    transform:
+        translateY(-5px);
+}
+
+
+/* =========================================
+   HEART
+========================================= */
+
+.envelope::after {
+
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    top: 58%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 8;
+
+    color: white;
+
+    font-size: 28px;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+}
+
+
+.envelope.open::after {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.4);
+}
+
+
+/* =========================================
+   FOR YOU TEXT
+========================================= */
+
+.envelope-body p {
+
+    position: absolute;
+
+    left: 50%;
+    top: 65%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 4;
+
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.envelope:not(.open):hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.03);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .envelope-top {
+        height: 52%;
+    }
+
+}
+
+/* =========================================
+   FIX FLAP - KELIHATAN BUKA
+========================================= */
+
+.envelope {
+    transform-style: preserve-3d;
+}
+
+
+/* Flap */
+
+.envelope-top {
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 52%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e2a3ac,
+            #c9828c
+        );
+
+    clip-path: polygon(
+        0 0,
+        50% 100%,
+        100% 0
+    );
+
+    transform-origin: top center;
+
+    transform:
+        rotateX(0deg);
+
+    z-index: 5;
+
+    transition:
+        transform 0.9s
+        cubic-bezier(0.22, 1, 0.36, 1),
+
+        filter 0.5s ease;
+}
+
+
+/* Saat dibuka */
+
+.envelope.open .envelope-top {
+
+    transform:
+        rotateX(155deg)
+        translateY(-4px);
+
+    filter:
+        brightness(0.92);
+
+    z-index: 5;
+}
+
+
+/* Bayangan di bagian lipatan */
+
+.envelope-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20%;
+    right: 20%;
+
+    bottom: 15px;
+
+    height: 20px;
+
+    background:
+        rgba(90, 40, 50, 0.12);
+
+    filter: blur(12px);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.5s ease;
+}
+
+.envelope.open .envelope-top::before {
+    opacity: 1;
+}
+
+
+/* =========================================
+   BADAN ENVELOPE
+========================================= */
+
+.envelope-body {
+    z-index: 2;
+}
+
+
+/* =========================================
+   HEART
+========================================= */
+
+.envelope::after {
+
+    z-index: 8;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+}
+
+.envelope.open::after {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.3);
+}
+
+
+/* =========================================
+   FOR YOU
+========================================= */
+
+.envelope-body p {
+
+    z-index: 4;
+
+    transition:
+        opacity 0.4s ease;
+}
+
+.envelope.open .envelope-body p {
+
+    opacity: 0;
+}
+
+/* =========================================
+   LETTER COMES OUT OF ENVELOPE
+========================================= */
+
+.letter-content {
+    position: relative;
+
+    margin-top: 20px;
+
+    opacity: 0;
+
+    transform:
+        translateY(-45px)
+        scale(0.94);
+
+    transform-origin: top center;
+
+    transition: none;
+}
+
+
+/* Saat surat dibuka */
+
+.letter-content.show {
+    display: block;
+
+    animation:
+        letterSlideOut 1.2s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+
+@keyframes letterSlideOut {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-45px)
+            scale(0.94);
+    }
+
+    35% {
+        opacity: 1;
+
+        transform:
+            translateY(-20px)
+            scale(0.97);
+    }
+
+    70% {
+        transform:
+            translateY(8px)
+            scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   LETTER SHADOW
+========================================= */
+
+.letter-content.show {
+    box-shadow:
+        0 30px 70px
+        rgba(80, 35, 45, 0.18),
+
+        0 8px 20px
+        rgba(80, 35, 45, 0.10);
+}
+
+
+/* =========================================
+   LITTLE HEART ABOVE LETTER
+========================================= */
+
+.letter-content::before {
+    content: "♡";
+
+    display: block;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    color: #c87580;
+
+    margin-bottom: 25px;
+
+    animation:
+        littleHeart 1s ease 0.5s both;
+}
+
+
+@keyframes littleHeart {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =========================================
+   ANNIVERSARY TEXT CONTRAST FIX
+========================================= */
+
+
+/* Judul utama */
+
+.anniversary h1 {
+    color: #55373b;
+
+    text-shadow:
+        0 2px 8px rgba(255, 235, 235, 0.20);
+}
+
+.anniversary h1 span {
+    color: #ffd0d6;
+
+    text-shadow:
+        0 2px 8px rgba(100, 45, 55, 0.18);
+}
+
+
+/* Paragraf pembuka */
+
+.anniversary > p {
+    color: #51383b;
+
+    line-height: 1.8;
+}
+
+
+/* Heart */
+
+.anniversary .heart {
+    color: #ffb1bd;
+
+    text-shadow:
+        0 3px 12px rgba(255, 160, 175, 0.35);
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.time-box {
+    background:
+        rgba(255, 242, 244, 0.72);
+
+    border:
+        1px solid rgba(255, 225, 230, 0.90);
+
+    box-shadow:
+        0 8px 20px
+        rgba(80, 35, 45, 0.08);
+}
+
+
+.time-box span {
+    color: #b96770;
+
+    font-weight: normal;
+}
+
+
+.time-box small {
+    color: #68494d;
+
+    font-weight: normal;
+}
+
+
+/* =========================================
+   QUOTE
+========================================= */
+
+.quote {
+    color: #65474b;
+
+    text-shadow:
+        0 1px 5px rgba(255, 230, 230, 0.15);
+}
+
+
+/* =========================================
+   MEMORIES
+========================================= */
+
+.memories h2 {
+    color: #704b50;
+
+    text-shadow:
+        0 2px 8px rgba(255, 230, 230, 0.18);
+}
+
+
+.memory-description {
+    color: #65474b;
+
+    line-height: 1.8;
+}
+
+
+/* Teks kecil di atas Our Memories */
+
+.memories > p:first-of-type {
+    color: #553d40;
+}
+
+
+/* =========================================
+   LOVE LETTER SECTION
+========================================= */
+
+.love-letter h2 {
+    color: #68464a;
+}
+
+
+.love-letter > p {
+    color: #604246;
+}
+
+/* =========================================
+   OUR LITTLE TIMELINE
+========================================= */
+
+.timeline {
+    position: relative;
+
+    width: 100%;
+    max-width: 700px;
+
+    margin: 120px auto 0;
+
+    padding:
+        80px 20px
+        100px;
+
+    border-top:
+        1px solid rgba(80, 40, 45, 0.20);
+
+    text-align: center;
+}
+
+
+/* Intro */
+
+.timeline-intro {
+    margin-bottom: 12px;
+
+    color: #604246;
+
+    font-size: 15px;
+}
+
+
+/* Judul */
+
+.timeline h2 {
+    margin: 0 0 70px;
+
+    color: #704b50;
+
+    font-size: 38px;
+
+    font-weight: normal;
+
+    letter-spacing: -0.5px;
+
+    text-shadow:
+        0 2px 8px
+        rgba(255, 230, 230, 0.18);
+}
+
+
+/* Container */
+
+.timeline-container {
+    position: relative;
+
+    width: 100%;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+
+/* Garis tengah */
+
+.timeline-container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        rgba(105, 65, 70, 0.25);
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* Item */
+
+.timeline-item {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+
+    margin-bottom: 75px;
+
+    min-height: 120px;
+}
+
+
+/* Item ganjil */
+
+.timeline-item:nth-child(odd) {
+    justify-content: flex-start;
+}
+
+
+/* Item genap */
+
+.timeline-item:nth-child(even) {
+    justify-content: flex-end;
+}
+
+
+/* Isi */
+
+.timeline-content {
+    width: 43%;
+
+    padding: 22px 24px;
+
+    background:
+        rgba(255, 242, 244, 0.48);
+
+    border:
+        1px solid
+        rgba(255, 225, 230, 0.55);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(80, 35, 45, 0.07);
+
+    backdrop-filter: blur(5px);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.timeline-content:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(80, 35, 45, 0.12);
+}
+
+
+/* Date */
+
+.timeline-date {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #a45f68;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Judul moment */
+
+.timeline-content h3 {
+    margin: 0 0 10px;
+
+    color: #68464a;
+
+    font-size: 20px;
+
+    font-weight: normal;
+}
+
+
+/* Deskripsi */
+
+.timeline-content p {
+    margin: 0;
+
+    color: #684a4e;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TIMELINE DOT
+========================================= */
+
+.timeline-dot {
+    position: absolute;
+
+    left: 50%;
+    top: 25px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #d88f99;
+
+    border:
+        4px solid #c98790;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 15px;
+
+    z-index: 2;
+
+    box-shadow:
+        0 5px 15px
+        rgba(80, 35, 45, 0.12);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.timeline-item:hover .timeline-dot {
+    transform:
+        translateX(-50%)
+        scale(1.15);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .timeline {
+        margin-top: 80px;
+
+        padding:
+            60px 10px
+            80px;
+    }
+
+
+    .timeline h2 {
+        font-size: 32px;
+
+        margin-bottom: 50px;
+    }
+
+
+    /* Garis pindah ke kiri */
+
+    .timeline-container::before {
+        left: 20px;
+
+        transform: none;
+    }
+
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        justify-content: flex-end;
+
+        padding-left: 45px;
+    }
+
+
+    .timeline-content {
+        width: 100%;
+    }
+
+
+    .timeline-dot {
+        left: 20px;
+
+        width: 34px;
+        height: 34px;
+    }
+
+}
